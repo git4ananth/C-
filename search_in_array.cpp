@@ -22,6 +22,6 @@ int main()
     }
     if (flag == false)
     {
-        cout << "Element not in Array";
+        cout << -1;
     }
 }
