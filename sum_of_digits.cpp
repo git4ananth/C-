@@ -1,7 +1,6 @@
+//Can you find out the sum of digits of a number?
 #include <iostream>
 using namespace std;
-
-int sum_of_digits(int num);
 
 int main()
 {
