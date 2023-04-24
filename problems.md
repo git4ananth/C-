@@ -8,7 +8,8 @@
 -> Write a program to excecute Fibonacci series.
 -> Write a program to count all the vowels of a given String.
 -> Can you search for an element in a given array? Try to print that number
-    if present else printf -1.
+    if present else printf -1. ✅
+    
 
 
 
