@@ -30,3 +30,8 @@
 *.exe
 *.out
 *.app
+
+# C/C++ Files object files 
+*.o 
+*.a 
+*.so
