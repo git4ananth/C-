@@ -1,16 +1,3 @@
-/*Create a parent class named ‘Courier’ with the following:
-
-Data members CourierID, Name_of_Courier.
-Method named PrintBill() to accept the Base_fare of type double as parameter and
-display the CourierID, Name_of_Courier , and Shipping_Cost, where Shipping_Cost = Base_fare + 30.
-Create a subclass names ‘Internatial_services’ which inherits from the Courier class.
-The class include the following:
-Data members Destination, Weight.
-Method named FinalBill()to print the CourierID, Name_of_Courier, Destination, Weight and Total_ ShippingCost,
-where Total_ShippingCost = Base_fare * Weight.
-Print the message “More Sale” when Total_ShippingCost is more than 100, otherwise print the message “Less Sale”.
-*/
-
 #include <iostream>
 #include <cstdlib>
 using namespace std;
@@ -20,43 +7,67 @@ class Courier
     int courierID;
     string courier_name;
 
+    double shipping_cost(double base_fare){
+        return base_fare + 30;
+    };
+
 public:
-    void setData(int courierID, string courier_name)
-    {
+
+    Courier(int courierID, string courier_name){
         this->courierID = courierID;
         this->courier_name = courier_name;
     }
-    void getData()
+    virtual void print_bill(double base_fare)
     {
         cout << "Courier ID : " << courierID;
         cout << "Courier Name : " << courier_name;
+        cout << "Shipping Cost : " << shipping_cost(base_fare);
     }
-    void printBill()
-    {
-        double base_fare;
-        cout << "Enter Base Fare";
-        cin >> base_fare;
-        double shipping_cost = base_fare + 30;
-        getData();
-        cout << "Shipping Cost : " << shipping_cost;
+
+    int get_courier_ID(){
+        return courierID;
+    }
+    string get_courier_name(){
+        return courier_name;
+    }
+    virtual double get_shipping_cost(){
+        return get_shipping_cost();
     }
 };
 
 class International_Services : public Courier
 {
-    float weight;
-    string destination;
-    float total_shipping_cost = ;
+    private:
+        float weight;
+        string destination;
+        //double total_shipping_cost;
 
-public:
-    void setData(float weight, string destination){
-        this->weight = weight;
-        this->destination = destination;
-        
-    }
-    void finalBill()
-    {
-        getData();
+        double calculate_shipping_cost(double base_fare){
+            return base_fare * weight;
+        };
 
-    }
+    public:
+        International_Services(int courierID, string courier_name, float weight, string destination) : Courier(courierID, courier_name){
+            this-> weight = weight;
+            this-> destination = destination;
+        }
+        void print_bill(double base_fare)
+        {
+            double total_shipping_cost = calculate_shipping_cost(base_fare);
+            string message = "Less Sale";
+            if (total_shipping_cost > 100){
+                message = "More Sale";
+            }
+            cout << "Courier ID : " << get_courier_ID();
+            cout << "Courier Name : " << get_courier_name();
+            cout << "Shipping Cost : " << total_shipping_cost;
+        }
+};
+
+int main(){
+    Courier c(123, "DHL");
+    Courier c1(1234, "BlueDart");
+    Courier c2(23, "DTDC");
+    International_Services is(123, "DHL",21.3, "Toronto");
+    is.print_bill(200);
 };
