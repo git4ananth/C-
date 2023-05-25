@@ -1,10 +1,10 @@
 # Practise Problems Set - 4
 
-1. TODO:**Student1**
+1. **Student1**
    Write a Program to perform the following scenario. Define a class student with rollno as
    member and getdata() and putdata() as member functions. .Define another class test that inherit the class student, this class test has data members as marks in the subject 1 and subject 2 with member functions getmark() and putmark(). Define a class Grade with data member grade and a member function to display the grade. Define another class result that inherit the classes test and Grade with data member total and member function to compute the total marks along with the grade.
 
-2. TODO:**Courier**
+2. **Courier**
    Create a parent class named ‘Courier’ with the following:
    Data members CourierID, Name_of_Courier.
    Method named PrintBill() to accept the Base_fare of type double as parameter and display the CourierID, Name_of_Courier , and    Shipping_Cost, where Shipping_Cost = Base_fare + 30.
@@ -12,7 +12,7 @@
    Data members Destination, Weight.
    Method named FinalBill()to print the CourierID, Name_of_Courier, Destination, Weight and Total_ ShippingCost, where Total_ShippingCost = Base_fare * Weight. Print the message “More Sale” when Total_ShippingCost is more than 100, otherwise print the message “Less Sale”.
 
-3. FIXME:**Employee**
+3. **Employee**
    Write a C++ program to read and print employee salary details using multilevel
    inheritance.
    a. Create a class named employee to get and print the employee details like employee number, name and designation.
@@ -41,3 +41,15 @@
    class that contains general properties and methods, and then create specific vehicle
    classes that inherit from Vehicle as well as from each other. Create a C++ code snippet for
    the above scenario that demonstrates inheritance.
+
+6. **Array**
+   Case1:
+   Input: lectures [][] = {{0, 5}, {1, 2}, {1, 10}}
+   Output: 3
+   1.An education centre runs several batches for various courses in a day. Due to the limited number of resources, they want to finalize the minimum number of class rooms needed to run the classes so that no batch of students wait.
+   Given the start time and end time of all batches, design a system that finds the minimum number of class rooms required for the education centre. Your system should overload the appropriate operators (wherever if possible).
+   Problem Input: List of start time and end time
+   Problem Output: Minimum number of class rooms required.
+
+7. **Increment & Decrement**
+   Write a Program to read an odd number N. and overload the Prefix ++ increment operator and Prefix -- decrement operator.
