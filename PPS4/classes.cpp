@@ -1,5 +1,7 @@
 #include <iostream>
 #include <cstdlib>
+#include <string>
+#include <vector>
 using namespace std;
 
 class Batch
@@ -20,24 +22,45 @@ public:
     }
 };
 
-int main()
-{
-    int rooms_required = 1; //atleast 1 needed
-    int batches[3][2];
-    // For taking integer inputs in a batches //
-    for (int m1 = 0; m1 < 3; m1++)
-    {
-        for (int m2 = 0; m2 < 2; m2++)
-        {
-            printf("Enter Element for Batch[%d,%d]", m1, m2);
-            cin >> batches[m1][m2];
+int* convert_string_to_array(string input) {
+    string input = "{{0, 5}, {1, 2}, {1, 10}}";
+    vector<int> arr; // change "int" to the data type you need (eg. vector<pair<int,int>> arr;)
+
+    int i = 0;
+    while (i < input.size()) {
+        if (isdigit(input[i])) {
+            int num = 0;
+            while (i < input.size() && isdigit(input[i])) {
+                num = num * 10 + (input[i] - '0');
+                i++;
+            }
+            arr.push_back(num);
+        }
+        else {
+            i++;
         }
     }
-    cout << endl;
-    Batch b1(batches[0][0], batches[0][1]);
-    Batch b2(batches[1][0], batches[1][1]);
-    Batch b3(batches[2][0], batches[2][1]);
 
+    int* array = new int[arr.size()]; // allocate memory for the array
+    for (int j = 0; j < arr.size(); j++) {
+        array[j] = arr[j]; // copy vector values to array
+    }
+
+    return array; // return the array
+}
+
+int main()
+{
+    int rooms_required = 1; //atleast 1 needed  
+    //batches
+    //cout<<"Enter the String: ";
+    //gets(str);
+    //int batches[3][2]= {{3,6},{ 5,4 },{ 2,4 }};
+    string input_string = "{{0, 5}, {1, 2}, {1, 10}}";
+    int* arry = convert_string_to_array(input_string);
+    //now build the objects from the array
+    Batch b1(arry[0],arry[1]), b2(arry[2],arry[3]), b3(arry[4], arry[5]);
+    cout << endl;
     if (b1 == b2)
     {
         rooms_required++;

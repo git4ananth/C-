@@ -9,50 +9,93 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <string>
 using namespace std;
+
+struct Marks{
+    int mark1;
+    int mark2;
+    int mark3;
+};
+
+struct std_info{
+    int ID;
+    string name;
+};
 
 class Student
 {
-    int ID;
-    string name;
-    int m1;
-    int m2;
-    int m3;
+    struct std_info info;  
 
-public:
-    Student(){};
-    Student(int ID, string name, int m1, int m2, int m3)
-    {
-        this->ID = ID;
-        this->name = name;
-        this->m1 = m1;
-        this->m2 = m2;
-        this->m3 = m3;
+    public:
+        struct std_info get_student(){
+            return info;
+        }
+
+        void put_student(struct std_info info)
+        {
+            this->info = info;
+        }
+};
+
+class Mark : public Student {
+    
+    struct Marks marks;
+
+    public:
+    
+    struct Marks get_marks(){
+        return marks;
     }
-    void getInfo()
-    {
-        cout << "ID : " << ID << endl;
-        cout << "Name : " << name << endl;
-        cout << "M1: " << m1 << endl;
-        cout << "M2 : " << m2 << endl;
-        cout << "M3 : " << m3 << endl;
+    void put_marks(struct Marks marks){
+        this->marks = marks;
     }
+
+};
+
+class Result : public Mark{
+    int total;
+    float average;
+
+    void calculate_total(){
+        struct Marks m = get_marks();
+        total = m.mark1 + m.mark2 +m.mark3;
+        average = total / 3;
+    }
+    public:
+
+        Result(struct std_info info, struct Marks marks) :  Mark(){
+            Student::put_student(info);
+            Mark::put_marks(marks);
+        } 
+        void show(){
+            calculate_total();
+            cout << "ID" << get_student().ID <<endl;
+            cout << "Name" << get_student().name <<endl;
+            cout << "Mark1:" << get_marks().mark1 <<endl;
+            cout << "Mark2:" << get_marks().mark2 <<endl;
+            cout << "Mark3:" << get_marks().mark3 <<endl;
+            cout << "The total is:" << total <<endl;
+            cout << "The average is:" << average <<endl;
+        }
 };
 
 int main()
 {
-    int id, m1, m2, m3;
-    string name;
+    struct std_info info;
     cout << "Enter ID : ";
-    cin >> id;
+    cin >> info.ID;
     cout << "Enter Name :";
-    cin >> name;
+    cin >> info.name;
+    struct Marks m;
     cout << "Enter M1 :";
-    cin >> m1;
+    cin >> m.mark1;
     cout << "Enter M2 :";
-    cin >> m2;
+    cin >> m.mark2;
     cout << "Enter M3 :";
-    cin >> m3;
-    Student s1(id, name, m1, m2, m3);
-    s1.getInfo();
-}
+    cin >> m.mark3;
+
+    Result r(info, m);
+    r.show();
+    return 0;
+};
