@@ -91,14 +91,21 @@ int main()
 
     //input 2 matrices
     int* mat1 = matrix_input(rows, columns, array_no);
+    array_no ++;
     cout << "Input values for array ::" << array_no; 
     cin >> rows;
     cin >> columns;
     int* mat2 = matrix_input(rows, columns, array_no);
 
-    Matrix m1(rows, columns, mat1 );
+    Matrix m1(rows, columns, mat1);
     Matrix m2(rows, columns, mat2);
 
     //now do matrix addition
     Matrix result = m1 + m2;
+    result.display();
+
+    //now matrix subtraction
+    result = m1 - m2;
+    result.display();
+
 }
