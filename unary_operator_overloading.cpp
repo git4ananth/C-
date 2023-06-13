@@ -24,6 +24,11 @@ public:
         --b;
         return *this;
     }
+    void operator ++(int){
+        cout << "inside post increment";
+        a++;
+        b++;
+    }
     void display()
     {
         cout << a << b << endl;
@@ -31,9 +36,9 @@ public:
 };
 int main()
 {
-    int a;
-    int x = a++;
     Increment i(5,10);
     Increment Y = ++i;
     Y.display();
+
+    i++;
 }
